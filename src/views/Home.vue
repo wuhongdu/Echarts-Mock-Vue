@@ -1,18 +1,28 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Echarts />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import { fetchList } from '@/api/article';
+import Echarts from '@/components/Echarts.vue';
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
+    Echarts,
   },
+  mounted() {
+    fetchList().then(response => {
+        console.log(response);
+    })
+  }
 };
 </script>
+<style lang="scss" scoped>
+.home {
+  width: 100%;
+  height: 100%;
+}
+</style>
